@@ -8,6 +8,7 @@ import max.shop.domain.embed.Address;
 import max.shop.domain.time.BaseTimeEntity;
 
 @Entity
+@Table(name = "ADDRESSES")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AddressEntity extends BaseTimeEntity {
@@ -17,8 +18,4 @@ public class AddressEntity extends BaseTimeEntity {
     private Long id;
 
     private Address address;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    private User user;
 }

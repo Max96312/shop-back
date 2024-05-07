@@ -16,4 +16,8 @@ public class Order {
     private Long id;
 
     private String orderNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

@@ -10,7 +10,7 @@ import max.shop.domain.type.DeliveryStatus;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class OrderDetails extends CreateTimeEntity {
+public class OrderDetail extends CreateTimeEntity {
     @Id
     @GeneratedValue
     @Column(name = "order_detail_id")
@@ -20,4 +20,12 @@ public class OrderDetails extends CreateTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus deliveryStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 }
