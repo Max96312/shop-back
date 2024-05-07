@@ -10,7 +10,7 @@ import max.shop.domain.type.ProductStatus;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Products extends BaseTimeEntity {
+public class Product extends BaseTimeEntity {
     @Id
     @GeneratedValue
     @Column(name = "product_id")
@@ -22,8 +22,13 @@ public class Products extends BaseTimeEntity {
     private int productPrice;
     private int productStock;
     private String productDescription;
-//    private String productImageUrl;
+
+    //TODO: private String productImageUrl;
 
     @Enumerated(EnumType.STRING)
     private ProductStatus productStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Categories category;
 }
