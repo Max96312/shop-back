@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import max.shop.common.exception.NotEnoughStockException;
 import max.shop.domain.time.BaseTimeEntity;
 import max.shop.domain.type.ItemStatus;
-//import max.shop.dto.request.CreateProductRequest;
+import max.shop.dto.request.ItemCreateForm;
 
 @Entity
 @Getter
@@ -23,6 +23,8 @@ public class Item extends BaseTimeEntity {
 
     private int price;
     private int stockQuantity;
+
+    @Column(length = 1000)
     private String description;
     //TODO: private String productImageUrl;
 
@@ -35,9 +37,14 @@ public class Item extends BaseTimeEntity {
 
 
     //생성 메소드
-//    public static Item createProduct(CreateProductRequest request) {
-//        return new Item(request.productName(), request.productPrice(), request.productStock(), request.productDescription(),);
-//    }
+    public static Item createItem(ItemCreateForm form) {
+        Item item = new Item();
+        item.name = form.itemName();
+        item.price = form.itemPrice();
+        item.stockQuantity = form.stockQuantity();
+        item.description = form.itemDescription();
+        return item;
+    }
 
     //비즈니스 로직
 
