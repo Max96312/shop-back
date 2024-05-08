@@ -3,7 +3,7 @@ package max.shop.controller;
 import lombok.RequiredArgsConstructor;
 //import max.shop.dto.request.CreateProductRequest;
 import max.shop.response.ResponseService;
-import max.shop.service.ProductService;
+import max.shop.service.ItemService;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final ProductService productService;
+    private final ItemService productService;
     private final ResponseService responseService;
 
     @GetMapping("/item/{id}")
