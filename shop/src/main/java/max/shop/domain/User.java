@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import max.shop.domain.embed.Address;
 import max.shop.domain.time.BaseTimeEntity;
 import max.shop.domain.type.Gender;
 import max.shop.dto.UserRegisterForm;
@@ -38,6 +39,9 @@ public class User extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Embedded
+    private Address address;
 
     public static User createUser(UserRegisterForm form){
         User user = new User();
