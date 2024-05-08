@@ -8,8 +8,6 @@ import max.shop.domain.time.BaseTimeEntity;
 import max.shop.domain.type.Gender;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "USERS")
@@ -36,8 +34,4 @@ public class User extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "user_id")
-    private List<AddressEntity> addresses = new ArrayList<>();
 }

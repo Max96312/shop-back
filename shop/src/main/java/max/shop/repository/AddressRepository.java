@@ -1,9 +1,9 @@
 package max.shop.repository;
 
-import max.shop.domain.AddressEntity;
+import max.shop.domain.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AddressRepository extends JpaRepository<AddressEntity, Long> {
+public interface AddressRepository extends JpaRepository<Address, Long> {
 }

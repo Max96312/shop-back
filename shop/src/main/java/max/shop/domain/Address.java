@@ -4,18 +4,23 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import max.shop.domain.embed.Address;
 import max.shop.domain.time.BaseTimeEntity;
 
 @Entity
-@Table(name = "ADDRESSES")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class AddressEntity extends BaseTimeEntity {
+public class Address extends BaseTimeEntity {
     @Id
     @GeneratedValue
     @Column(name = "address_id")
     private Long id;
 
-    private Address address;
+    private String street;
+    private String city;
+    private String state;
+    private String zip;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 }

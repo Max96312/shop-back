@@ -1,9 +1,9 @@
 package max.shop.repository;
 
-import max.shop.domain.OrderDetail;
+import max.shop.domain.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> {
+public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 }

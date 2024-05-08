@@ -4,17 +4,22 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import max.shop.domain.type.CategoryType;
+import lombok.Setter;
+import max.shop.domain.type.DeliveryStatus;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Categories {
+public class Delivery {
     @Id
     @GeneratedValue
-    @Column(name="categories_id")
+    @Column(name = "delivery_id")
     private Long id;
 
+    @Setter
+    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
+    private Order order;
+
     @Enumerated(EnumType.STRING)
-    private CategoryType categoryType;
+    private DeliveryStatus status;
 }

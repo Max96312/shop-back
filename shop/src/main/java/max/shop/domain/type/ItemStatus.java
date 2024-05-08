@@ -1,8 +1,9 @@
 package max.shop.domain.type;
 
-public enum ProductStatus {
+public enum ItemStatus {
     SALE,
     SOLDOUT,
     HIDE,
-    REMOVE
+    REMOVE,
+    WAIT
 }
