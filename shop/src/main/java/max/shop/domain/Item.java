@@ -41,11 +41,16 @@ public class Item extends BaseTimeEntity {
 
     //비즈니스 로직
 
-    //상품 증가
+    /**
+     * stock 증가
+     */
     public void addStock(int quantity) {
         this.stockQuantity += quantity;
     }
-    //상품 감소
+
+    /**
+     * stock 감소
+     */
     public void removeStock(int quantity) {
         int restStock = this.stockQuantity - quantity;
         if(restStock < 0) {
