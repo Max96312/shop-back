@@ -2,13 +2,16 @@ package max.shop.service;
 
 import lombok.RequiredArgsConstructor;
 import max.shop.domain.*;
+import max.shop.dto.request.OrderSearchRequest;
 import max.shop.repository.AddressRepository;
 import max.shop.repository.ItemRepository;
 import max.shop.repository.OrderRepository;
 import max.shop.repository.UserRepository;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -58,4 +61,7 @@ public class OrderService {
     }
 
     //검색
+    public List<Order> findOrders(OrderSearchRequest searchRequest, Pageable pageable) {
+        return orderRepository.findOrders(searchRequest, pageable);
+    }
 }
