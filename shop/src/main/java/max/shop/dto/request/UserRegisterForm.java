@@ -1,4 +1,4 @@
-package max.shop.dto;
+package max.shop.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
