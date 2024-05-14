@@ -34,19 +34,20 @@ public class OrderService {
         Optional<Item> item = itemRepository.findById(itemId);
 
         //배송정보 생성
-        Delivery delivery = Delivery.createDelivery(user.get().getAddress());
+//        Delivery delivery = Delivery.createDelivery(user.get().getAddress());
 
         //주문 상품 생성
         OrderItem orderItem = OrderItem.createOrderItem(item.get(), item.get().getPrice(), count);
 
 
         //주문 생성
-        Order order = Order.createOrder(user.get(), delivery, orderItem);
+//        Order order = Order.createOrder(user.get(), delivery, orderItem);
 
         //주문 저장
-        orderRepository.save(order);
+//        orderRepository.save(order);
 
-        return order.getId();
+//        return order.getId();
+        return null;
     }
 
     /**

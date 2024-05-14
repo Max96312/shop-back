@@ -2,6 +2,7 @@ package max.shop.common.exception;
 
 public class ItemNotFoundException extends RuntimeException {
     public ItemNotFoundException() {
+        super();
     }
 
     public ItemNotFoundException(String message) {
