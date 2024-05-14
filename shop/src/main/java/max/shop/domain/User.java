@@ -47,12 +47,12 @@ public class User extends BaseTimeEntity {
 
     public static User createUser(UserRegisterForm form){
         User user = new User();
-        user.id = form.userId();
-        user.username = form.username();
-        user.password = form.password();
-        user.phoneNumber = form.phoneNumber();
-        user.birthday = form.birthday();
-        user.gender = form.gender();
+        user.id = form.getUserId();
+        user.username = form.getUsername();
+        user.password = form.getPassword();
+        user.phoneNumber = form.getPhoneNumber();
+        user.birthday = form.getBirthday();
+        user.gender = form.getGender();
         return user;
     }
 

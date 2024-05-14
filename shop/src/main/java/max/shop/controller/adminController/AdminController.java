@@ -1,7 +1,6 @@
-package max.shop.controller;
+package max.shop.controller.adminController;
 
 import lombok.RequiredArgsConstructor;
-import max.shop.service.item.ItemServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

@@ -26,7 +26,7 @@ public class OrderRepositoryCustomImpl extends QuerydslRepositorySupport impleme
 
         return from(order)
                 .join(order.user, user)
-                .where(statusEq(searchRequest.orderStatus()), nameLike(searchRequest.userName()))
+                .where(statusEq(searchRequest.getOrderStatus()), nameLike(searchRequest.getUserName()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();

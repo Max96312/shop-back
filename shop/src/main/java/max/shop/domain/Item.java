@@ -1,20 +1,22 @@
 package max.shop.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import max.shop.common.exception.NotEnoughStockException;
 import max.shop.domain.time.BaseTimeEntity;
 import max.shop.domain.type.ItemStatus;
 import max.shop.dto.request.ItemCreateForm;
+import max.shop.dto.request.UpdateItemDto;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Item extends BaseTimeEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id")
     private Long id;
 
@@ -31,19 +33,27 @@ public class Item extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private ItemStatus itemStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Categories category;
-
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "category_id")
+//    private Categories category;
 
     //생성 메소드
-    public static Item createItem(ItemCreateForm form) {
+    public Item createItem(ItemCreateForm form) {
         Item item = new Item();
-        item.name = form.itemName();
-        item.price = form.itemPrice();
-        item.stockQuantity = form.stockQuantity();
-        item.description = form.itemDescription();
+        item.name = form.getName();
+        item.price = form.getPrice();
+        item.stockQuantity = form.getStockQuantity();
+        item.description = form.getDescription();
+        item.itemStatus = ItemStatus.SALE;
         return item;
+    }
+
+    public void updateItem(UpdateItemDto form) {
+        this.name = form.getName();
+        this.price = form.getPrice();
+        this.stockQuantity = form.getStockQuantity();
+        this.description = form.getDescription();
+        this.itemStatus = ItemStatus.SALE;
     }
 
     //비즈니스 로직
@@ -65,8 +75,8 @@ public class Item extends BaseTimeEntity {
         }
         this.stockQuantity = restStock;
     }
-
     // 상품 상태 변경
+
     public void changeStatusSale(){
         this.itemStatus = ItemStatus.SALE;
     }
