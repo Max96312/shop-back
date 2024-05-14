@@ -4,7 +4,7 @@ import jakarta.transaction.Transactional;
 import max.shop.common.exception.UserNameDuplicatedException;
 import max.shop.domain.User;
 import max.shop.domain.type.Gender;
-import max.shop.dto.request.UserRegisterForm;
+import max.shop.dto.request.user.UserRegisterForm;
 import max.shop.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

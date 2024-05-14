@@ -2,7 +2,7 @@ package max.shop.service;
 
 import lombok.RequiredArgsConstructor;
 import max.shop.domain.*;
-import max.shop.dto.request.OrderSearchRequest;
+import max.shop.dto.request.order.OrderSearchRequest;
 import max.shop.repository.AddressRepository;
 import max.shop.repository.ItemRepository;
 import max.shop.repository.OrderRepository;

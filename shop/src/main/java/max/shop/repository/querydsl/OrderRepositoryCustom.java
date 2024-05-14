@@ -1,7 +1,7 @@
 package max.shop.repository.querydsl;
 
 import max.shop.domain.Order;
-import max.shop.dto.request.OrderSearchRequest;
+import max.shop.dto.request.order.OrderSearchRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;

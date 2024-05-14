@@ -5,7 +5,7 @@ import max.shop.domain.Order;
 import max.shop.domain.QOrder;
 import max.shop.domain.QUser;
 import max.shop.domain.type.OrderStatus;
-import max.shop.dto.request.OrderSearchRequest;
+import max.shop.dto.request.order.OrderSearchRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.util.StringUtils;
