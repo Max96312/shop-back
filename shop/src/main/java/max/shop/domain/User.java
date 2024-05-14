@@ -4,13 +4,15 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import max.shop.domain.embed.Address;
 import max.shop.domain.time.BaseTimeEntity;
 import max.shop.domain.type.Gender;
+import max.shop.dto.request.user.Address;
 import max.shop.dto.request.user.UserRegisterForm;
+import max.shop.dto.response.UserResponse;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -41,18 +43,19 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @Embedded
-    @Setter
-    private Address address;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AddressEntity> addresses = new ArrayList<>();
 
     public static User createUser(UserRegisterForm form){
         User user = new User();
         user.id = form.getUserId();
-        user.username = form.getUsername();
+        user.username = form.getUserName();
         user.password = form.getPassword();
         user.phoneNumber = form.getPhoneNumber();
         user.birthday = form.getBirthday();
         user.gender = form.getGender();
+        AddressEntity address = new AddressEntity();
+        address.createAddress(form);
         return user;
     }
 
@@ -67,5 +70,14 @@ public class User extends BaseTimeEntity {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
+    }
+
+    public UserResponse toDto(User entity) {
+        return new UserResponse(
+                entity.getId(),
+                entity.getUsername(),
+                entity.getCreatedAt(),
+                entity.getUpdatedAt()
+        );
     }
 }

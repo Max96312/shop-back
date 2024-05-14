@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import max.shop.common.exception.UserNameDuplicatedException;
 import max.shop.common.exception.UserNotFoundException;
 import max.shop.domain.User;
+import max.shop.dto.request.user.Address;
+import max.shop.dto.request.user.UserRegisterForm;
+import max.shop.dto.response.UserResponse;
 import max.shop.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,14 +25,14 @@ public class UserService {
      * 회원 가입
      */
     @Transactional
-    public String join(User user) {
-        validateDuplicateUser(user); // 중복 회원 검증
-        userRepository.save(user);
-        return user.getId();
+    public UserResponse join(UserRegisterForm form) {
+        validateDuplicateUser(form.getUserId()); // 중복 회원 검증
+        User savedUser = userRepository.save(User.createUser(form));
+        return savedUser.toDto(savedUser);
     }
 
-    private void validateDuplicateUser(User user) {
-        Optional<User> findUser = userRepository.findById(user.getId());
+    private void validateDuplicateUser(String userId) {
+        Optional<User> findUser = userRepository.findById(userId);
         if (!findUser.isEmpty()) {
             throw new UserNameDuplicatedException("이미 존재하는 회원입니다.");
         }
