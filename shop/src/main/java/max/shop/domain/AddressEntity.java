@@ -20,13 +20,12 @@ public class AddressEntity extends BaseTimeEntity {
     @Embedded
     private Address address;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
-    public AddressEntity createAddress(UserRegisterForm form) {
+    public AddressEntity addAddress(UserRegisterForm form) {
         AddressEntity address = new AddressEntity();
-//        address.user = ;
         address.address = form.getAddress();
         return address;
     }
