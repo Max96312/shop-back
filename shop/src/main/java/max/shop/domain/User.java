@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import max.shop.domain.time.BaseTimeEntity;
 import max.shop.domain.type.Gender;
-import max.shop.dto.request.user.Address;
 import max.shop.dto.request.user.UserRegisterForm;
-import max.shop.dto.response.UserResponse;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -55,7 +53,7 @@ public class User extends BaseTimeEntity {
         user.birthday = form.getBirthday();
         user.gender = form.getGender();
         AddressEntity address = new AddressEntity();
-        address.createAddress(form);
+        address.addAddress(form);
         return user;
     }
 
@@ -70,14 +68,5 @@ public class User extends BaseTimeEntity {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
-    }
-
-    public UserResponse toDto(User entity) {
-        return new UserResponse(
-                entity.getId(),
-                entity.getUsername(),
-                entity.getCreatedAt(),
-                entity.getUpdatedAt()
-        );
     }
 }

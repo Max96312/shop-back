@@ -1,12 +1,13 @@
 package max.shop.service;
 
 import lombok.RequiredArgsConstructor;
+import max.shop.common.exception.LoginFailureException;
 import max.shop.common.exception.UserNameDuplicatedException;
 import max.shop.common.exception.UserNotFoundException;
 import max.shop.domain.User;
-import max.shop.dto.request.user.Address;
+import max.shop.dto.request.user.UserLoginForm;
 import max.shop.dto.request.user.UserRegisterForm;
-import max.shop.dto.response.UserResponse;
+import max.shop.dto.UserAccountDto;
 import max.shop.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,10 +26,22 @@ public class UserService {
      * 회원 가입
      */
     @Transactional
-    public UserResponse join(UserRegisterForm form) {
+    public UserAccountDto join(UserRegisterForm form) {
         validateDuplicateUser(form.getUserId()); // 중복 회원 검증
         User savedUser = userRepository.save(User.createUser(form));
-        return savedUser.toDto(savedUser);
+        return new UserAccountDto(savedUser.getId(), savedUser.getUsername());
+    }
+
+    /**
+     * 로그인
+     */
+    @Transactional
+    public UserAccountDto loginUser(UserLoginForm form) {
+        User user = userRepository.findById(form.getUserId()).orElseThrow(UserNotFoundException::new);
+        if (!user.getPassword().equals(form.getPassword())) {
+            throw new LoginFailureException();
+        }
+        return new UserAccountDto(user.getId(), user.getUsername());
     }
 
     private void validateDuplicateUser(String userId) {
