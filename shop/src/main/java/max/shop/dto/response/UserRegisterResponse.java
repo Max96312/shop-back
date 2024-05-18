@@ -6,9 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import max.shop.dto.UserAccountDto;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 public class UserRegisterResponse {
     String userId;
 

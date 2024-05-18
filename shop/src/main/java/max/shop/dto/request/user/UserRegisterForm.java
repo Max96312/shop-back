@@ -13,8 +13,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserRegisterForm {
     @NotBlank(message = "회원 아이디는 필수 입력란입니다.")
     @Length(max = 20, message = "회원 아이디의 길이는 최대 20자까지 가능합니다.")
