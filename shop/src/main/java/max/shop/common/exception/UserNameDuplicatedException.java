@@ -2,6 +2,7 @@ package max.shop.common.exception;
 
 public class UserNameDuplicatedException extends RuntimeException {
     public UserNameDuplicatedException() {
+        super();
     }
 
     public UserNameDuplicatedException(String message) {

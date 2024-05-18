@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import max.shop.domain.embed.Address;
 import max.shop.domain.time.BaseTimeEntity;
+import max.shop.dto.request.member.Address;
 
 @Entity
 @Getter
@@ -20,6 +20,13 @@ public class AddressEntity extends BaseTimeEntity {
     private Address address;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
+
+    public AddressEntity addAddress(Address address, Member member) {
+        AddressEntity addressEntity = new AddressEntity();
+        addressEntity.address = address;
+        addressEntity.member = member;
+        return addressEntity;
+    }
 }

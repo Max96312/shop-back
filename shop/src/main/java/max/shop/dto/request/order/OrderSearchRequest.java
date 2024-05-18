@@ -1,4 +1,4 @@
-package max.shop.dto.request;
+package max.shop.dto.request.order;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

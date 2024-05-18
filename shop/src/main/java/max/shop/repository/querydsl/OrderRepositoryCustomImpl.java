@@ -2,10 +2,10 @@ package max.shop.repository.querydsl;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import max.shop.domain.Order;
+import max.shop.domain.QMember;
 import max.shop.domain.QOrder;
-import max.shop.domain.QUser;
 import max.shop.domain.type.OrderStatus;
-import max.shop.dto.request.OrderSearchRequest;
+import max.shop.dto.request.order.OrderSearchRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.util.StringUtils;
@@ -22,7 +22,7 @@ public class OrderRepositoryCustomImpl extends QuerydslRepositorySupport impleme
     public List<Order> findOrders(OrderSearchRequest searchRequest, Pageable pageable) {
 
         QOrder order = QOrder.order;
-        QUser user = QUser.user;
+        QMember user = QMember.member;
 
         return from(order)
                 .join(order.user, user)
@@ -36,7 +36,7 @@ public class OrderRepositoryCustomImpl extends QuerydslRepositorySupport impleme
         if(!StringUtils.hasText(userName)){
             return null;
         }
-        return QUser.user.username.like(userName);
+        return QMember.member.name.like(userName);
     }
 
     private BooleanExpression statusEq(OrderStatus statusCond){

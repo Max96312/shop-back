@@ -1,6 +1,6 @@
 package max.shop.dto;
 
-import max.shop.dto.request.ItemCreateForm;
+import max.shop.dto.request.item.ItemCreateForm;
 
 public record ItemDto(
         Long id,

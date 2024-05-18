@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import max.shop.common.exception.NotEnoughStockException;
 import max.shop.domain.time.BaseTimeEntity;
 import max.shop.domain.type.ItemStatus;
-import max.shop.dto.request.ItemCreateForm;
-import max.shop.dto.request.UpdateItemDto;
+import max.shop.dto.request.item.ItemCreateForm;
+import max.shop.dto.request.item.UpdateItemDto;
 
 @Entity
 @Getter
