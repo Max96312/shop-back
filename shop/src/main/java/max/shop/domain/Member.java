@@ -43,13 +43,13 @@ public class Member extends BaseTimeEntity {
         user.name = form.getName();
         user.password = form.getPassword();
         user.phoneNumber = form.getPhoneNumber();
+        user.email = form.getEmail();
         return user;
     }
 
     public void changeName(String memberName) {
         this.name = memberName;
     }
-
 
     public void changePhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;

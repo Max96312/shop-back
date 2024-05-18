@@ -8,13 +8,13 @@ import max.shop.common.exception.UserNotFoundException;
 import max.shop.domain.Member;
 import max.shop.dto.request.member.MemberLoginForm;
 import max.shop.dto.request.member.MemberRegisterForm;
+import max.shop.dto.response.member.MemberLoginResponse;
 import max.shop.dto.response.member.MemberRegisterResponse;
 import max.shop.repository.MemberRepository;
 import max.shop.serviceImp.MemberService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,15 +39,15 @@ public class MemberServiceImp implements MemberService {
     /**
      * 로그인
      */
-//    @Override
-//    @Transactional
-//    public MemberAccountDto loginUser(MemberLoginForm form) {
-//        Member findMember = memberRepository.findById(form.getUserId()).orElseThrow(UserNotFoundException::new);
-//        if (!findMember.getPassword().equals(form.getPassword())) {
-//            throw new LoginFailureException();
-//        }
-//        return new MemberAccountDto(user.getId(), user.getUserName(), user.getPhoneNumber());
-//    }
+    @Override
+    @Transactional
+    public MemberLoginResponse login(MemberLoginForm form) {
+        Member findMember = memberRepository.findById(form.getUserId()).orElseThrow(UserNotFoundException::new);
+        if (!findMember.getPassword().equals(form.getPassword())) {
+            throw new LoginFailureException();
+        }
+        return new MemberLoginResponse(findMember.getId(), findMember.getName());
+    }
 
     /**
      * 회원 정보 수정
