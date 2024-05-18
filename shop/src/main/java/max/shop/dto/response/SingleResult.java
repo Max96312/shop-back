@@ -1,4 +1,4 @@
-package max.shop.response;
+package max.shop.dto.response;
 
 import lombok.Getter;
 import lombok.Setter;
