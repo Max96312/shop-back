@@ -1,12 +1,12 @@
 package max.shop.repository;
 
-import max.shop.domain.User;
+import max.shop.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, String> {
-    Optional<User> findById(String username);
+public interface MemberRepository extends JpaRepository<Member, String> {
+    Optional<Member> findById(String memberId);
 }

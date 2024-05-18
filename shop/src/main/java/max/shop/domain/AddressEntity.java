@@ -5,8 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import max.shop.domain.time.BaseTimeEntity;
-import max.shop.dto.request.user.Address;
-import max.shop.dto.request.user.UserRegisterForm;
+import max.shop.dto.request.member.Address;
 
 @Entity
 @Getter
@@ -20,13 +19,14 @@ public class AddressEntity extends BaseTimeEntity {
     @Embedded
     private Address address;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
-    public AddressEntity addAddress(UserRegisterForm form) {
-        AddressEntity address = new AddressEntity();
-        address.address = form.getAddress();
-        return address;
+    public AddressEntity addAddress(Address address, Member member) {
+        AddressEntity addressEntity = new AddressEntity();
+        addressEntity.address = address;
+        addressEntity.member = member;
+        return addressEntity;
     }
 }

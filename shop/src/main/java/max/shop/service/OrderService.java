@@ -6,7 +6,7 @@ import max.shop.dto.request.order.OrderSearchRequest;
 import max.shop.repository.AddressRepository;
 import max.shop.repository.ItemRepository;
 import max.shop.repository.OrderRepository;
-import max.shop.repository.UserRepository;
+import max.shop.repository.MemberRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final UserRepository userRepository;
+    private final MemberRepository userRepository;
     private final ItemRepository itemRepository;
     private final AddressRepository addressRepository;
 
@@ -30,7 +30,7 @@ public class OrderService {
     @Transactional
     public Long order(String memberId, Long itemId, int count) {
         //엔티티 조회
-        Optional<User> user = userRepository.findById(memberId);
+        Optional<Member> user = userRepository.findById(memberId);
         Optional<Item> item = itemRepository.findById(itemId);
 
         //배송정보 생성

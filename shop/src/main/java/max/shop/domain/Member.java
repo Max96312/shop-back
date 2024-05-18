@@ -5,10 +5,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import max.shop.domain.time.BaseTimeEntity;
-import max.shop.domain.type.Gender;
-import max.shop.dto.request.user.UserRegisterForm;
+import max.shop.dto.request.member.MemberRegisterForm;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,48 +18,52 @@ import java.util.Objects;
         )})
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User extends BaseTimeEntity {
+public class Member extends BaseTimeEntity {
 
     @Id
-    @Column(name = "user_id", nullable = false, updatable = false, length = 20)
+    @Column(name = "member_id", nullable = false, updatable = false, length = 20)
     private String id;
 
     @Column(length = 20, nullable = false)
-    private String username;
+    private String name;
 
     private String password;
 
     @Column(length = 20, nullable = false)
     private String phoneNumber;
 
-    private LocalDateTime birthday;
+    private String email;
 
-    private boolean isAdmin = false;
-
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "member")
     private List<AddressEntity> addresses = new ArrayList<>();
 
-    public static User createUser(UserRegisterForm form){
-        User user = new User();
-        user.id = form.getUserId();
-        user.username = form.getUserName();
+    public static Member createUser(MemberRegisterForm form){
+        Member user = new Member();
+        user.id = form.getId();
+        user.name = form.getName();
         user.password = form.getPassword();
         user.phoneNumber = form.getPhoneNumber();
-        user.birthday = form.getBirthday();
-        user.gender = form.getGender();
-        AddressEntity address = new AddressEntity();
-        address.addAddress(form);
         return user;
+    }
+
+    public void changeName(String memberName) {
+        this.name = memberName;
+    }
+
+
+    public void changePhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void changePassword(String password) {
+        this.password = password;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+        Member user = (Member) o;
         return Objects.equals(id, user.id);
     }
 

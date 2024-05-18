@@ -25,7 +25,7 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user;
+    private Member user;
 
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
@@ -53,7 +53,7 @@ public class Order {
     }
 
     //==생성 메서드==//
-    public static Order createOrder(User user, Delivery delivery, OrderItem... orderItems) {
+    public static Order createOrder(Member user, Delivery delivery, OrderItem... orderItems) {
         Order order = new Order();
         order.user = user;
         order.setDelivery(delivery);

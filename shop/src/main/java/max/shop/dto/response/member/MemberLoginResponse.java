@@ -1,4 +1,4 @@
-package max.shop.dto.response;
+package max.shop.dto.response.member;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserLoginResponse {
+public class MemberLoginResponse {
     private String userId;
     private String userName;
 }

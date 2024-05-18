@@ -1,4 +1,4 @@
-package max.shop.dto.request.user;
+package max.shop.dto.request.member;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
