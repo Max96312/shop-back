@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import max.shop.domain.type.DeliveryStatus;
+import max.shop.dto.request.member.Address;
 
 @Entity
 @Getter
@@ -23,12 +24,12 @@ public class Delivery {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 
-//    @Embedded
-//    private Address address;
+    @Embedded
+    private Address address;
 
-//    public static Delivery createDelivery(Address address) {
-//        Delivery delivery = new Delivery();
-//        delivery.address = address;
-//        return delivery;
-//    }
+    public static Delivery createDelivery(Address address) {
+        Delivery delivery = new Delivery();
+        delivery.address = address;
+        return delivery;
+    }
 }

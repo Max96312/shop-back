@@ -1,6 +1,6 @@
 package max.shop.domain.type;
 
-public enum CategoryType {
+public enum ItemType {
     OUTER,
     COAT,
     TOP,
