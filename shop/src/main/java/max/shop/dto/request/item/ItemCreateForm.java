@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import max.shop.domain.type.ItemType;
 import org.hibernate.validator.constraints.Length;
 
 @Data
@@ -28,6 +29,9 @@ public class ItemCreateForm {
     @NotBlank(message = "상품 설명은 필수 입력란입니다.")
     @Length(max = 1000, message = "상품 설명의 길이는 최대 1000자까지 가능합니다.")
     String description;
+
+    @NotNull(message = "상품 타입은 필수 입력란입니다.")
+    ItemType itemType;
 
 //    public static ItemCreateForm of(String name, int price, int stockQuantity, String description) {
 //        return new ItemCreateForm(name, price, stockQuantity, description);
