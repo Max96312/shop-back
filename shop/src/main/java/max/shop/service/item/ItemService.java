@@ -1,18 +1,24 @@
 package max.shop.service.item;
 
 import max.shop.domain.Item;
+import max.shop.domain.type.ItemType;
 import max.shop.dto.request.item.ItemCreateForm;
 import max.shop.dto.request.item.UpdateItemDto;
+import max.shop.dto.response.item.ItemDtoResponse;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface ItemService {
     // Item CRUD
-    public void saveItem(ItemCreateForm item);
-    public Item findOne(Long id);
-    public void updateItem(Long itemId, UpdateItemDto item);
-    public void deleteItem(Long id);
+    void saveItem(ItemCreateForm item);
+    Item findOne(Long id);
+    void updateItem(Long itemId, UpdateItemDto item);
+    void deleteItem(Long id);
 
-    // Items R
-    public List<Item> findItems();
+    // Items
+    List<Item> findItems();
+
+    // App Service
+    List<ItemDtoResponse> getItemPage(ItemType type, Pageable pageable);
 }

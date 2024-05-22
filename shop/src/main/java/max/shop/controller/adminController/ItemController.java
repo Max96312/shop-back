@@ -3,6 +3,7 @@ package max.shop.controller.adminController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import max.shop.domain.Item;
+import max.shop.domain.type.ItemType;
 import max.shop.dto.request.item.ItemCreateForm;
 import max.shop.dto.request.item.UpdateItemDto;
 import max.shop.service.item.ItemServiceImpl;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -28,6 +30,14 @@ import java.util.List;
 @Slf4j
 public class ItemController {
     private final ItemServiceImpl itemService;
+
+    /**
+     * enum
+     */
+    @ModelAttribute("itemTypes")
+    public ItemType[] itemTypes() {
+        return ItemType.values();
+    }
 
     @GetMapping("/items/new")
     public String createItemForm(Model model) {

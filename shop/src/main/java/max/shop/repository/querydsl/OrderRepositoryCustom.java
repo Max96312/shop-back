@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-public interface OrderRepositoryCustom {
-    List<Order> findOrders(OrderSearchRequest searchRequest, Pageable pageable);
-}
+//public interface OrderRepositoryCustom {
+//    List<Order> findOrders(OrderSearchRequest searchRequest, Pageable pageable);
+//}

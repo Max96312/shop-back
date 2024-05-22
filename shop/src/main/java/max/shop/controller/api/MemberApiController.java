@@ -8,17 +8,17 @@ import max.shop.dto.request.member.MemberRegisterForm;
 import max.shop.dto.response.SingleResult;
 import max.shop.dto.response.member.MemberLoginResponse;
 import max.shop.dto.response.member.MemberRegisterResponse;
-import max.shop.service.MemberServiceImp;
 import max.shop.service.response.ResponseService;
+import max.shop.serviceImp.MemberService;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/member")
+@RequestMapping("/api/v1/member")
 public class MemberApiController {
-    private final MemberServiceImp memberService;
+    private final MemberService memberService;
     private final ResponseService responseService;
 
     /**
@@ -47,21 +47,11 @@ public class MemberApiController {
      * 회원 정보 수정
      * - 이름 변경
      * - 전화 번호 수정
-     * - 주소 변경
+     * - 주소 변경 : api 분리
      */
-    //TODO: 주소 추가 기능 -> api 분리
-//    @PutMapping("/{memberId}/edit")
-//    public SingleResult<MemberUpdateResponse> updateName(@RequestBody MemberUpdateForm form){
-//        memberService.updateMemberName(form);
-//        return new UserUpdateResponse();
-//    }
+
 
     /**
      * 회원 탈퇴
      */
-//    @DeleteMapping("/{memberId}")
-//    public Result deleteUser(@PathVariable("memberId") String memberId){
-//        memberService.deleteMember(memberId);
-//        return responseService.handleSuccessResult();
-//    }
 }

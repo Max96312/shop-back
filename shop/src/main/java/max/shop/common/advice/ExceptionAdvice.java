@@ -15,7 +15,7 @@ public class ExceptionAdvice {
     private final ResponseService responseService;
 
     @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.ACCEPTED.INTERNAL_SERVER_ERROR)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Result defaultException() {
         return responseService.handleFailResult(500, "오류가 발생 하였습니다.");
     }
@@ -62,11 +62,6 @@ public class ExceptionAdvice {
         return responseService.handleFailResult(400, "");
     }
 
-    @ExceptionHandler(DeliveryCompException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Result failInputDelivery() {
-        return responseService.handleFailResult(400, "배송이 완료된 주문은 취소가 불가능합니다.");
-    }
 
     @ExceptionHandler(ItemNotFoundException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

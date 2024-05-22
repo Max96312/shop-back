@@ -62,7 +62,7 @@ public class OrderService {
     }
 
     //검색
-    public List<Order> findOrders(OrderSearchRequest searchRequest, Pageable pageable) {
-        return orderRepository.findOrders(searchRequest, pageable);
-    }
+//    public List<Order> findOrders(OrderSearchRequest searchRequest, Pageable pageable) {
+//        return orderRepository.findOrders(searchRequest, pageable);
+//    }
 }
