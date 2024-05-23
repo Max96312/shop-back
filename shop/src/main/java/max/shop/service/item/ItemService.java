@@ -21,4 +21,5 @@ public interface ItemService {
 
     // App Service
     List<ItemDtoResponse> getItemPage(ItemType type, Pageable pageable);
+    ItemDtoResponse getItem(Long id);
 }
