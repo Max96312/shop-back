@@ -62,4 +62,10 @@ public class ItemServiceImpl implements ItemService{
                 .map(ItemDtoResponse::new)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public ItemDtoResponse getItem(Long id) {
+        Item item = itemRepository.findById(id).orElseThrow(ItemNotFoundException::new);
+        return new ItemDtoResponse(item);
+    }
 }
