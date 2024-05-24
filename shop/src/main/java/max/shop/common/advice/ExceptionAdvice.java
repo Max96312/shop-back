@@ -3,7 +3,7 @@ package max.shop.common.advice;
 import lombok.RequiredArgsConstructor;
 import max.shop.common.exception.*;
 import max.shop.dto.response.Result;
-import max.shop.service.response.ResponseService;
+import max.shop.serviceImp.ResponseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

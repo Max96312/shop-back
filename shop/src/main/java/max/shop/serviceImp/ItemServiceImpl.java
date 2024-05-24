@@ -1,4 +1,4 @@
-package max.shop.service.item;
+package max.shop.serviceImp;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +9,7 @@ import max.shop.dto.request.item.ItemCreateForm;
 import max.shop.dto.request.item.UpdateItemDto;
 import max.shop.dto.response.item.ItemDtoResponse;
 import max.shop.repository.ItemRepository;
+import max.shop.service.ItemService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Slf4j
-public class ItemServiceImpl implements ItemService{
+public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
 

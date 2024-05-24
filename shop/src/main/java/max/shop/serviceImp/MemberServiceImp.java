@@ -1,4 +1,4 @@
-package max.shop.service;
+package max.shop.serviceImp;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,7 @@ import max.shop.dto.request.member.MemberRegisterForm;
 import max.shop.dto.response.member.MemberLoginResponse;
 import max.shop.dto.response.member.MemberRegisterResponse;
 import max.shop.repository.MemberRepository;
-import max.shop.serviceImp.MemberService;
+import max.shop.service.MemberService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,4 +1,4 @@
-package max.shop.serviceImp;
+package max.shop.service;
 
 import max.shop.dto.request.member.MemberLoginForm;
 import max.shop.dto.request.member.MemberRegisterForm;

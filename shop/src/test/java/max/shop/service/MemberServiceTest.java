@@ -6,6 +6,7 @@ import max.shop.domain.Member;
 import max.shop.dto.request.member.MemberRegisterForm;
 import max.shop.dto.response.member.MemberRegisterResponse;
 import max.shop.repository.MemberRepository;
+import max.shop.serviceImp.MemberServiceImp;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

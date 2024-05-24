@@ -1,4 +1,4 @@
-package max.shop.service.item;
+package max.shop.service;
 
 import max.shop.domain.Item;
 import max.shop.domain.type.ItemType;

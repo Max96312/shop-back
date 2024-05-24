@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import max.shop.domain.time.BaseTimeEntity;
+import max.shop.dto.request.member.Address;
 import max.shop.dto.request.member.MemberRegisterForm;
 
 import java.util.ArrayList;
@@ -34,6 +35,10 @@ public class Member extends BaseTimeEntity {
 
     private String email;
 
+    @Embedded
+    private Address address;
+
+    //TODO
     @OneToMany(mappedBy = "member")
     private List<AddressEntity> addresses = new ArrayList<>();
 

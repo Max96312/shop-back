@@ -1,4 +1,4 @@
-package max.shop.service.response;
+package max.shop.serviceImp;
 
 import max.shop.dto.response.MultipleResult;
 import max.shop.dto.response.Result;
