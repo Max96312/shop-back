@@ -4,7 +4,6 @@ import max.shop.common.exception.ItemNotFoundException;
 import max.shop.domain.Item;
 import max.shop.dto.request.item.ItemCreateForm;
 import max.shop.repository.ItemRepository;
-import max.shop.service.item.ItemService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
